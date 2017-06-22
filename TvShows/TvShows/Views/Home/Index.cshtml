@@ -1,4 +1,4 @@
-﻿@model TvShows.Models.Entities.TvShow[][]
+﻿@model IEnumerable<IEnumerable<TvShows.Models.Entities.TvShow>>
 
 <div class="jumbotron">
 	<h1>Welcome to TvShows!</h1>
@@ -12,24 +12,24 @@
 			</div>
 			<div class="panel-body">
 				<div class="row">
-					 @if (Model.Length == 0) {
+					 @if (Model.Count() == 0) {
 						 <div class="col-sm-12">
 							 <h3 class="text-warning">Sorry, no Tv shows yet :(</h3>
 						 </div>
 					 } else {
 						<div class="col-sm-6">
 							<div class="list-group">
-								@foreach (var show in Model[0]) {
+								@foreach (var show in Model.ElementAt(0)) {
 									<a href="/Shows/View/@show.ID" class="list-group-item">
 										<span class="text-info">@show.Title</span>
 									</a>
 								}
 							</div>
 						</div>
-						if (Model.Length > 1) {
+						if (Model.Count() > 1) {
 							<div class="col-sm-6">
 								<div class="list-group">
-									@foreach (var show in Model[1]) {
+									@foreach (var show in Model.ElementAt(1)) {
 										<a href="/Shows/View/@show.ID" class="list-group-item">
 											<span class="text-info">@show.Title</span>
 										</a>

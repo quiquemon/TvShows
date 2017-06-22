@@ -24,6 +24,18 @@ namespace TvShows.Controllers
             return View(shows);
         }
 
+		[HttpGet]
+		[ValidateInput(false)]
+		public ActionResult Search(string query)
+		{
+			var shows = db.Shows
+				.Where(show => show.Title.Contains(query))
+				.ToArray();
+
+			ViewBag.Query = query;
+			return View(shows);
+		}
+
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing) {
