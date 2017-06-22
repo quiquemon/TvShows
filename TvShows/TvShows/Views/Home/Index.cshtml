@@ -1,5 +1,12 @@
 ﻿@model IEnumerable<IEnumerable<TvShows.Models.Entities.TvShow>>
 
+@if (Session["Error"] != null) {
+	<div class="alert alert-danger alert-dismissable">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		@Session["ErrorMessage"]
+	</div>
+	Session["Error"] = Session["ErrorMessage"] = null;
+}
 <div class="jumbotron">
 	<h1>Welcome to TvShows!</h1>
 	<p>Here you will find everything about your favorite TV shows ;v</p>
@@ -20,7 +27,7 @@
 						<div class="col-sm-6">
 							<div class="list-group">
 								@foreach (var show in Model.ElementAt(0)) {
-									<a href="/Shows/View/@show.ID" class="list-group-item">
+									<a href="/Shows/Show/@show.ID" class="list-group-item">
 										<span class="text-info">@show.Title</span>
 									</a>
 								}
@@ -30,7 +37,7 @@
 							<div class="col-sm-6">
 								<div class="list-group">
 									@foreach (var show in Model.ElementAt(1)) {
-										<a href="/Shows/View/@show.ID" class="list-group-item">
+										<a href="/Shows/Show/@show.ID" class="list-group-item">
 											<span class="text-info">@show.Title</span>
 										</a>
 									}
@@ -39,11 +46,6 @@
 						}
 					 }
 				</div>
-				<br>
-				<a href="/Shows/Add" class="btn btn-success">
-					<span class="glyphicon glyphicon-plus"></span>
-					Add a new TV shows!
-				</a>
 			</div>
 		</div>
 	</div>

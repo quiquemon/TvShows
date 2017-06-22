@@ -1,0 +1,46 @@
+﻿@{ ViewBag.Title = Model.Title; }
+@model TvShows.Models.Entities.TvShow
+
+<div class="row">
+	<div class="col-sm-6">
+		<img src="@Model.UrlLogo" class="img-responsive">
+		<h1>@Model.Title</h1>
+		<p class="text-justify"><b class="text-info">Summary:</b> @Model.Summary</p>
+		<p><b class="text-success">Created By:</b> @Model.CreatedBy</p>
+		<p><b class="text-warning">Country:</b> @Model.Country</p>
+		<p><b class="text-danger">Original Language:</b> @Model.OriginalLanguage</p>
+		<a href="@Model.Website" target="_blank">
+			<b>Website</b>
+			<span class="glyphicon glyphicon-share"></span>
+		</a>
+		<br>
+		<br>
+		<a href="/" class="btn btn-primary">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+			Return to Main Page
+		</a>
+		<br>
+		<br>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">Seasons</div>
+			<div class="panel-body">
+				@if (Model.Seasons.Count() == 0) {
+					<h3 class="text-info">This show doesn't have any seasons yet :'v</h3>
+				} else {
+					<div class="list-group">
+						@foreach (var season in Model.Seasons) {
+							<a href="/Shows/Season/@season.ID" class="list-group-item">
+								<p><b class="text-info">Season Number:</b> @season.SeasonNumber</p>
+								@if (season.Title != null) {
+									<p><b class="text-info">Title:</b> @season.Title</p>
+								}
+							</a>
+						}
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</div>
