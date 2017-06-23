@@ -1,5 +1,5 @@
 ﻿@{ ViewBag.Title = Model.Title; }
-@model TvShows.Models.Entities.TvShow
+@model TvShow
 
 <div class="row">
 	<div class="col-sm-6">
@@ -27,14 +27,14 @@
 			<div class="panel-heading">Seasons</div>
 			<div class="panel-body">
 				@if (Model.Seasons.Count() == 0) {
-					<h3 class="text-info">This show doesn't have any seasons yet :'v</h3>
+					<b class="text-info">This show doesn't have any seasons yet :'v</b>
 				} else {
 					<div class="list-group">
 						@foreach (var season in Model.Seasons) {
 							<a href="/Shows/Season/@season.ID" class="list-group-item">
-								<p><b class="text-info">Season Number:</b> @season.SeasonNumber</p>
+								<b class="text-info">Season Number:</b> @season.SeasonNumber
 								@if (season.Title != null) {
-									<p><b class="text-info">Title:</b> @season.Title</p>
+									<span>|</span> <b class="text-info">Title:</b> @season.Title
 								}
 							</a>
 						}

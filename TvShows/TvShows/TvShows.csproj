@@ -148,6 +148,7 @@
     <Compile Include="Models\DAL\TvShowsContext.cs" />
     <Compile Include="Models\DAL\TvShowsInitializer.cs" />
     <Compile Include="Models\Entities.cs" />
+    <Compile Include="Models\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shows\Show.cshtml" />
+    <Content Include="Views\Shows\Season.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
